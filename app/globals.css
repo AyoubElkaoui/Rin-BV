@@ -1,0 +1,141 @@
+:root { color-scheme: light; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  margin: 0;
+  background: #FBFAF7;
+  color: #1C1B18;
+  font-family: 'Inter', Helvetica, Arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+  text-wrap: pretty;
+}
+
+/* Full-bleed buitenlaag; individuele contentblokken begrenzen zichzelf op 1280px. */
+main, footer { width: 100%; }
+.full-bleed { width: 100vw; margin-left: calc(50% - 50vw); }
+.content-width { max-width: 1280px; margin: 0 auto; padding-left: clamp(20px,4vw,48px); padding-right: clamp(20px,4vw,48px); }
+
+a { color: #141310; text-decoration: none; }
+a:hover { color: #9A7628; }
+::selection { background: #E7C97F; color: #1C1B18; }
+
+* { -webkit-tap-highlight-color: transparent; }
+
+input:focus, select:focus, textarea:focus { box-shadow: 0 0 0 2px #E7C97F; }
+
+/* scroll reveal */
+[data-rv] {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity .7s cubic-bezier(.2,.7,.2,1), transform .7s cubic-bezier(.2,.7,.2,1);
+}
+[data-rv].rv-in { opacity: 1; transform: none; }
+
+/* lift-on-hover kaarten */
+[data-soft] { transition: transform .35s cubic-bezier(.2,.7,.2,1), box-shadow .35s; }
+[data-soft]:hover { transform: translateY(-4px); box-shadow: 0 22px 46px -26px rgba(28,27,24,.4); }
+
+/* hover-states die niet inline kunnen */
+[data-menu-item]:hover { background: #F3F0E8; }
+[data-row]:hover { background: #F7F4EC; }
+[data-btn-dark]:hover { background: #9A7628 !important; color: #FBFAF7 !important; }
+[data-btn-gold]:hover { background: #F3E3BD !important; }
+[data-btn-sand]:hover { background: #E9E4D8 !important; }
+[data-btn-ghost]:hover { background: rgba(251,250,247,.18) !important; }
+[data-footlink]:hover { color: #E7C97F !important; }
+
+@media (max-width: 1100px) {
+  [data-navdesk] { display: none !important; }
+  [data-burger] { display: flex !important; }
+  [data-two] { grid-template-columns: 1fr !important; }
+  [data-split] { grid-template-columns: 1fr !important; }
+  [data-page] { padding-top: 76px !important; }
+  .hero-photo-desktop { display: none !important; }
+  .hero-photo-mobile { display: block !important; }
+  .hero-copy { max-width: 100% !important; }
+  .svc-row { grid-template-columns: 38px 1fr auto !important; }
+  .svc-row-img { display: none !important; }
+}
+
+@media (max-width: 640px) {
+  .content-width { padding-left: 20px; padding-right: 20px; }
+  [data-two] { gap: 28px !important; }
+  [data-two] > * { min-width: 0 !important; }
+  [data-service-grid] { grid-template-columns: minmax(0, 1fr) !important; }
+  [data-route-row] { grid-template-columns: minmax(0, 1fr) auto !important; gap: 8px 14px !important; }
+  [data-route-row] span:last-child { grid-column: 1 / -1; justify-self: start !important; min-width: 0 !important; text-align: left !important; }
+  [data-mobile-stack] { flex-direction: column !important; align-items: stretch !important; }
+  [data-mobile-stack] > * { width: 100% !important; box-sizing: border-box; justify-content: center; }
+  button, a { -webkit-tap-highlight-color: transparent; }
+}
+
+/* ---------- Eyebrow: hoofdletter-label met gouden lijn (signatuur) ---------- */
+.eyebrow { display: inline-flex; align-items: center; gap: 13px; font: 600 12px/1 'Inter', sans-serif; letter-spacing: .2em; text-transform: uppercase; color: #9A7628; }
+.eyebrow::before { content: ""; display: block; width: 28px; height: 1px; background: #E7C97F; }
+.eyebrow--onDark { color: #E7C97F; }
+.eyebrow--plain::before { display: none; }
+
+/* ---------- Premium dienstenkaart ---------- */
+.svc-card { position: relative; transition: transform .4s cubic-bezier(.2,.7,.2,1), box-shadow .4s, border-color .4s; }
+.svc-card::before { content: ""; position: absolute; top: 0; left: 0; right: 0; height: 2px; background: #E7C97F; transform: scaleX(0); transform-origin: left; transition: transform .4s cubic-bezier(.2,.7,.2,1); }
+.svc-card:hover { transform: translateY(-6px); box-shadow: 0 34px 64px -34px rgba(28,27,24,.34); border-color: rgba(231,201,127,.65); }
+.svc-card:hover::before { transform: scaleX(1); }
+.svc-card:hover .svc-card-cta { color: #9A7628; gap: 12px; }
+.svc-card-cta { transition: color .3s, gap .3s; }
+
+/* ---------- Bewegende trefwoordenband ---------- */
+.marquee { overflow: hidden; }
+.marquee-track { display: inline-flex; align-items: center; white-space: nowrap; will-change: transform; animation: marq 42s linear infinite; }
+@keyframes marq { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+.marquee:hover .marquee-track { animation-play-state: paused; }
+@media (prefers-reduced-motion: reduce) { .marquee-track { animation: none; } }
+
+/* ---------- Fijne link-onderstreping ---------- */
+.gold-link { position: relative; }
+.gold-link::after { content: ""; position: absolute; left: 0; bottom: -3px; width: 100%; height: 1px; background: #E7C97F; transform: scaleX(0); transform-origin: right; transition: transform .35s cubic-bezier(.2,.7,.2,1); }
+.gold-link:hover::after { transform: scaleX(1); transform-origin: left; }
+
+/* ---------- Redactionele dienstenrijen ---------- */
+.svc-row { transition: background .3s; }
+.svc-row:hover { background: #F7F4EC; }
+.svc-row:hover .svc-row-title { color: #9A7628; }
+.svc-row:hover .svc-row-img { opacity: 1; transform: translateY(-50%) scale(1); }
+.svc-row-title { transition: color .3s, transform .4s cubic-bezier(.2,.7,.2,1); }
+.svc-row-img { transition: opacity .45s, transform .45s cubic-bezier(.2,.7,.2,1); }
+.svc-arrow { transition: background .3s, transform .3s; }
+.svc-row:hover .svc-arrow { background: #1C1B18 !important; transform: translateX(4px); }
+.svc-row:hover .svc-arrow span { border-color: #E7C97F !important; }
+
+/* ---------- Interactieve werkwijze en rustige FAQ-openklap ---------- */
+.process-number { transition: transform .45s cubic-bezier(.2,.7,.2,1), background-color .35s ease, color .35s ease, box-shadow .35s ease; }
+.process-step-title { transition: color .35s ease; }
+.process-step:hover .process-number,
+.process-step:focus-within .process-number { transform: translateY(-5px) rotate(-6deg); background: #E7C97F !important; color: #1C1B18 !important; box-shadow: 0 12px 22px -12px rgba(154,118,40,.7); }
+.process-step:hover .process-step-title { color: #9A7628; }
+.faq-answer { will-change: max-height, opacity, transform; }
+
+/* ---------- Immersieve hero (foto bloedt naar de rechter schermrand) ---------- */
+.hero { position: relative; overflow: hidden; border-bottom: 1px solid rgba(28,27,24,.09); }
+.hero-inner { position: relative; z-index: 1; max-width: 1280px; margin: 0 auto; padding: clamp(96px,10vw,144px) clamp(20px,4vw,48px) clamp(56px,7vw,110px); }
+.hero-copy { max-width: min(650px, 94%); }
+.hero-photo-desktop { position: absolute; top: 0; right: 0; bottom: 0; width: min(46vw, 860px); }
+.hero-photo-desktop img { width: 100%; height: 100%; object-fit: cover; display: block; }
+.hero-photo-desktop::after { content: ""; position: absolute; inset: 0; background: linear-gradient(90deg, #FBFAF7 0%, rgba(251,250,247,.55) 26%, rgba(251,250,247,0) 58%); pointer-events: none; }
+.hero-photo-mobile { display: none; }
+.hero-trust { display: flex; flex-wrap: wrap; align-items: center; gap: 10px 22px; margin-top: 32px; }
+.hero-trust span { display: inline-flex; align-items: center; gap: 9px; font: 400 12.5px/1.4 'Space Mono', monospace; letter-spacing: .03em; color: rgba(28,27,24,.6); }
+.hero-trust span::before { content: ""; display: block; width: 6px; height: 6px; border-radius: 50%; background: #E7C97F; }
+
+/* ---------- Full-bleed CTA-band met achtergrondfoto ---------- */
+.cta-band { position: relative; overflow: hidden; background: #1C1B18; }
+.cta-band-img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; opacity: .3; }
+.cta-band-veil { position: absolute; inset: 0; background: linear-gradient(90deg, rgba(20,19,16,.95) 0%, rgba(20,19,16,.78) 45%, rgba(20,19,16,.55) 100%); }
+.cta-band-inner { position: relative; z-index: 1; max-width: 1280px; margin: 0 auto; padding: clamp(56px,8vw,120px) clamp(20px,4vw,48px); }
+
+@media (prefers-reduced-motion: reduce) {
+  [data-rv] { opacity: 1 !important; transform: none !important; }
+  [data-soft]:hover { transform: none !important; }
+  .gold-dot { animation: none !important; }
+}
