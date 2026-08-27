@@ -1,16 +1,27 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, type FormEvent } from 'react';
 import { company, rideTypes } from '@/lib/site';
 import { c, font, input, label, display } from '@/lib/theme';
+import { sendQuote, type QuotePayload } from '@/lib/quote';
 
 export default function QuoteForm() {
-  const [sent, setSent] = useState(false);
+  const [status, setStatus] = useState<'idle' | 'sending' | 'sent' | 'error'>('idle');
+  const [error, setError] = useState('');
 
-  // TODO: hier je eigen verzendlogica (Netlify Forms of POST naar een endpoint).
-  const onSubmit = (e) => {
+  const onSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    setSent(true);
+    setStatus('sending');
+    setError('');
+
+    try {
+      await sendQuote(Object.fromEntries(new FormData(e.currentTarget).entries()) as QuotePayload);
+      e.currentTarget.reset();
+      setStatus('sent');
+    } catch (err) {
+      setStatus('error');
+      setError(err instanceof Error ? err.message : 'De aanvraag kon niet worden verstuurd.');
+    }
   };
 
   const box = {
@@ -20,7 +31,7 @@ export default function QuoteForm() {
     boxShadow: 'inset 0 0 0 1px ' + c.hairline,
   };
 
-  if (sent) {
+  if (status === 'sent') {
     return (
       <div style={box}>
         <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'flex-start', gap: 14, padding: '18px 0' }}>
@@ -44,7 +55,7 @@ export default function QuoteForm() {
             Wij nemen zo snel mogelijk contact op via de gegevens in uw aanvraag. Heeft het haast? Vermeld dat duidelijk in het bericht.
           </div>
           <button
-            onClick={() => setSent(false)}
+            onClick={() => setStatus('idle')}
             style={{ marginTop: 4, padding: '13px 20px', border: 0, borderRadius: 8, background: c.sand, font: '600 14px/1 ' + font, cursor: 'pointer' }}
           >
             Nieuwe aanvraag
@@ -57,6 +68,9 @@ export default function QuoteForm() {
   return (
     <div style={box}>
       <form onSubmit={onSubmit} style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit,minmax(180px,1fr))', gap: 14 }}>
+        <label aria-hidden="true" style={{ position: 'absolute', left: '-10000px', width: 1, height: 1, overflow: 'hidden' }}>
+          Website<input name="website" tabIndex={-1} autoComplete="off" />
+        </label>
         <label style={label}>Bedrijfsnaam<input name="bedrijfsnaam" required placeholder="Uw bedrijf" style={input} /></label>
         <label style={label}>Contactpersoon<input name="contactpersoon" required placeholder="Naam" style={input} /></label>
         <label style={label}>E-mail<input name="email" required type="email" placeholder="naam@bedrijf.nl" style={input} /></label>
@@ -85,12 +99,14 @@ export default function QuoteForm() {
           <button
             data-btn-dark
             type="submit"
-            style={{ padding: '16px 26px', border: 0, borderRadius: 8, background: c.ink, color: c.bg, font: '700 15px/1 ' + font, cursor: 'pointer' }}
+            disabled={status === 'sending'}
+            style={{ padding: '16px 26px', border: 0, borderRadius: 8, background: c.ink, color: c.bg, font: '700 15px/1 ' + font, cursor: status === 'sending' ? 'wait' : 'pointer', opacity: status === 'sending' ? .65 : 1 }}
           >
-            Verstuur aanvraag
+            {status === 'sending' ? 'Bezig met versturen…' : 'Verstuur aanvraag'}
           </button>
           <span style={{ font: '400 12.5px/1.5 ' + font, color: 'rgba(28,27,24,.45)' }}>Vrijblijvend · geen verplichtingen</span>
         </div>
+        {status === 'error' ? <div role="alert" style={{ gridColumn: '1/-1', padding: '12px 14px', borderRadius: 8, background: '#F8E8E4', color: '#8E3025', font: '500 13px/1.5 ' + font }}>{error}</div> : null}
       </form>
     </div>
   );

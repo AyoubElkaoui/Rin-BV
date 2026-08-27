@@ -1,16 +1,27 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, type FormEvent } from 'react';
 import { rideTypes } from '@/lib/site';
 import { c, font, input, label } from '@/lib/theme';
+import { sendQuote, type QuotePayload } from '@/lib/quote';
 
 export default function QuickQuote() {
-  const [sent, setSent] = useState(false);
+  const [status, setStatus] = useState<'idle' | 'sending' | 'sent' | 'error'>('idle');
+  const [error, setError] = useState('');
 
-  // TODO: hier je eigen verzendlogica (Netlify Forms of POST naar een endpoint).
-  const onSubmit = (e) => {
+  const onSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    setSent(true);
+    setStatus('sending');
+    setError('');
+
+    try {
+      await sendQuote(Object.fromEntries(new FormData(e.currentTarget).entries()) as QuotePayload);
+      e.currentTarget.reset();
+      setStatus('sent');
+    } catch (err) {
+      setStatus('error');
+      setError(err instanceof Error ? err.message : 'De aanvraag kon niet worden verstuurd.');
+    }
   };
 
   return (
@@ -27,6 +38,9 @@ export default function QuickQuote() {
       <div style={{ marginTop: 6, font: '400 13.5px/1.6 ' + font, color: 'rgba(28,27,24,.55)' }}>
         Vul de route en uw contactgegevens in. We nemen daarna contact op via telefoon of e-mail.
       </div>
+      <label aria-hidden="true" style={{ position: 'absolute', left: '-10000px', width: 1, height: 1, overflow: 'hidden' }}>
+        Website<input name="website" tabIndex={-1} autoComplete="off" />
+      </label>
       <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit,minmax(180px,1fr))', gap: 10, marginTop: 18 }}>
         <label style={label}>
           Bedrijfsnaam
@@ -70,6 +84,7 @@ export default function QuickQuote() {
       <button
         data-btn-dark
         type="submit"
+        disabled={status === 'sending'}
         style={{
           marginTop: 14,
           width: '100%',
@@ -79,12 +94,13 @@ export default function QuickQuote() {
           background: c.ink,
           color: c.bg,
           font: '700 15px/1 ' + font,
-          cursor: 'pointer',
+          cursor: status === 'sending' ? 'wait' : 'pointer',
+          opacity: status === 'sending' ? .65 : 1,
         }}
       >
-          Aanvraag versturen
+          {status === 'sending' ? 'Bezig met versturen…' : 'Aanvraag versturen'}
       </button>
-      {sent ? (
+      {status === 'sent' ? (
         <div
           style={{
             marginTop: 12,
@@ -96,6 +112,11 @@ export default function QuickQuote() {
           }}
         >
           Aanvraag ontvangen. We nemen contact op via het telefoonnummer of e-mailadres uit uw aanvraag.
+        </div>
+      ) : null}
+      {status === 'error' ? (
+        <div role="alert" style={{ marginTop: 12, padding: '12px 14px', borderRadius: 8, background: '#F8E8E4', color: '#8E3025', font: '500 13px/1.5 ' + font }}>
+          {error}
         </div>
       ) : null}
     </form>
