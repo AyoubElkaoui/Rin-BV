@@ -23,8 +23,8 @@ of de map \`out\` handmatig op app.netlify.com/drop slepen.
 De formulieren gebruiken de Netlify Function \`netlify/functions/send-quote.ts\`. Stel in Netlify bij **Site configuration → Environment variables** deze variabelen in:
 
 - \`RESEND_API_KEY\`: een nieuwe Resend API-key (de sleutel hoort nooit in GitHub of frontend-code).
-- \`RESEND_TO_EMAIL\`: het inboxadres dat aanvragen ontvangt, standaard \`info@rinlogistiek.nl\`.
-- \`RESEND_FROM_EMAIL\`: een afzender op een in Resend geverifieerd domein, bijvoorbeeld \`R.I.N. B.V. <info@rinlogistiek.nl>\`.
+- \`RESEND_TO_EMAIL\`: het inboxadres dat aanvragen ontvangt, standaard \`contact@rinlogistiek.nl\`.
+- \`RESEND_FROM_EMAIL\`: een afzender op een in Resend geverifieerd domein, bijvoorbeeld \`R.I.N. B.V. <noreply@rinlogistiek.nl>\`.
 
 Lokaal testen kan met Netlify Dev nadat de variabelen in \`.env.local\` staan: \`npx netlify dev\`.
 

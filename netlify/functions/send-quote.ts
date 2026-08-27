@@ -34,8 +34,8 @@ export const handler = async (event: NetlifyEvent): Promise<NetlifyResponse> => 
   if (event.httpMethod !== 'POST') return json(405, { error: 'Methode niet toegestaan.' });
 
   const apiKey = process.env.RESEND_API_KEY;
-  const to = process.env.RESEND_TO_EMAIL || 'info@rinlogistiek.nl';
-  const from = process.env.RESEND_FROM_EMAIL || 'R.I.N. B.V. <info@rinlogistiek.nl>';
+  const to = process.env.RESEND_TO_EMAIL || 'contact@rinlogistiek.nl';
+  const from = process.env.RESEND_FROM_EMAIL || 'R.I.N. B.V. <noreply@rinlogistiek.nl>';
   if (!apiKey) return json(500, { error: 'De mailservice is nog niet geconfigureerd.' });
 
   let payload: Record<string, unknown>;
