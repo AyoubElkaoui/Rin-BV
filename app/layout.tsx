@@ -9,7 +9,7 @@ export const metadata = {
   description:
     'R.I.N. B.V. verzorgt zakelijk transport, spoedritten, same-day delivery en vaste routes vanuit Nederland. Persoonlijke planning en rechtstreeks vervoer.',
   keywords: ['transportbedrijf', 'koeriersdienst', 'spoedtransport', 'sameday delivery', 'contractvervoer', 'Nederland'],
-  icons: { icon: '/rin-logo.png' },
+  icons: { icon: '/rin-mark.png' },
 };
 
 export const viewport = { width: 'device-width', initialScale: 1 };
