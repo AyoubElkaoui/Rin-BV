@@ -1,7 +1,7 @@
 export type QuotePayload = Record<string, string>;
 
 export async function sendQuote(payload: QuotePayload) {
-  const response = await fetch('/.netlify/functions/send-quote', {
+  const response = await fetch('/api/send-quote/', {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify(payload),

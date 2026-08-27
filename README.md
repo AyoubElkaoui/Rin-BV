@@ -1,6 +1,6 @@
 # R.I.N. B.V. — website (Next.js)
 
-Koeriers- en spoedtransport. Next.js 14, App Router, statische export.
+Koeriers- en spoedtransport. Next.js, App Router en TypeScript.
 
 ## Starten
 
@@ -12,21 +12,21 @@ npm run dev      # http://localhost:3000
 ## Bouwen / deployen
 
 \`\`\`bash
-npm run build    # schrijft ./out
+npm run build
+npm run start    # lokaal productie draaien
 \`\`\`
 
-Netlify: repo koppelen (netlify.toml staat er al in: build \`npm run build\`, publish \`out\`),
-of de map \`out\` handmatig op app.netlify.com/drop slepen.
+Vercel: importeer deze GitHub-repository als een Next.js-project. Vercel herkent de build automatisch; er is geen aparte publish-map nodig.
 
 ### Formuliermails via Resend
 
-De formulieren gebruiken de Netlify Function \`netlify/functions/send-quote.ts\`. Stel in Netlify bij **Site configuration → Environment variables** deze variabelen in:
+De formulieren sturen via de Next.js route \`app/api/send-quote/route.ts\` met Resend. Stel in Vercel bij **Project Settings → Environment Variables** deze variabelen in:
 
 - \`RESEND_API_KEY\`: een nieuwe Resend API-key (de sleutel hoort nooit in GitHub of frontend-code).
 - \`RESEND_TO_EMAIL\`: het inboxadres dat aanvragen ontvangt, standaard \`contact@rinlogistiek.nl\`.
 - \`RESEND_FROM_EMAIL\`: een afzender op een in Resend geverifieerd domein, bijvoorbeeld \`R.I.N. B.V. <noreply@rinlogistiek.nl>\`.
 
-Lokaal testen kan met Netlify Dev nadat de variabelen in \`.env.local\` staan: \`npx netlify dev\`.
+Lokaal testen kan nadat de variabelen in \`.env.local\` staan met \`npm run dev\`.
 
 ## Structuur
 
@@ -40,5 +40,5 @@ Lokaal testen kan met Netlify Dev nadat de variabelen in \`.env.local\` staan: \
 
 1. **Contactgegevens** in \`lib/site.ts\` (\`company\`): telefoon, e-mail, adres, KvK, BTW. Telefoon, adres en registratienummers zijn nog als placeholder gemarkeerd.
 2. **Foto's**: de demo gebruikt neutrale logistieke beelden uit \`public/photos/\`. Vervang ze desgewenst door eigen foto's met dezelfde bestandsnamen.
-3. **Formulieren**: aanvragen worden via de Resend-Netlify Function naar het ingestelde inboxadres gestuurd. Test na het invullen van de Resend-variabelen altijd een echte aanvraag.
+3. **Formulieren**: aanvragen worden via de Resend-route naar het ingestelde inboxadres gestuurd. Test na het invullen van de Resend-variabelen altijd een echte aanvraag.
 4. **Logo**: \`public/rin-logo.png\` is uit de aangeleverde JPG gehaald. Een originele PNG/SVG is scherper.

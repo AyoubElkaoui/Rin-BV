@@ -1,7 +1,6 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  // Statische export: 'npm run build' schrijft een ./out map die je direct op Netlify kunt zetten.
-  output: 'export',
+  // Vercel gebruikt de standaard Next.js output en route handlers voor de formulieren.
   images: { unoptimized: true },
   trailingSlash: true,
 };
