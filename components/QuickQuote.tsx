@@ -11,12 +11,14 @@ export default function QuickQuote() {
 
   const onSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+    const form = e.currentTarget;
+    const payload = Object.fromEntries(new FormData(form).entries()) as QuotePayload;
     setStatus('sending');
     setError('');
 
     try {
-      await sendQuote(Object.fromEntries(new FormData(e.currentTarget).entries()) as QuotePayload);
-      e.currentTarget.reset();
+      await sendQuote(payload);
+      form.reset();
       setStatus('sent');
     } catch (err) {
       setStatus('error');
