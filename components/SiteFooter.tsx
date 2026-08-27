@@ -30,7 +30,7 @@ export default function SiteFooter() {
           <div>
             <img src="/rin-logo.png" alt={company.name} style={{ height: 24, width: 'auto', display: 'block' }} />
             <p style={{ margin: '16px 0 0', maxWidth: '32ch', font: '400 14px/1.7 ' + font, color: 'rgba(251,250,247,.55)' }}>
-              Koeriers- en spoedtransport voor bedrijven. Rechtstreeks van A naar B, met aanvragen ook buiten kantooruren.
+              Koeriers- en spoedtransport voor bedrijven. Rechtstreeks van A naar B, met een vast aanspreekpunt en 24/7 spoedbereikbaarheid.
             </p>
           </div>
 
@@ -38,8 +38,11 @@ export default function SiteFooter() {
             <span style={col}>Contact</span>
             <div style={list}>
               <Link data-footlink href="/contact" style={link}>Direct contact opnemen</Link>
+              <a data-footlink href={company.phoneHref} style={link}>{company.phone}</a>
               <a data-footlink href={'mailto:' + company.email} style={link}>{company.email}</a>
+              <span style={{ color: 'rgba(251,250,247,.7)' }}>{company.addressLines.join(' · ')}</span>
               <span style={{ color: 'rgba(251,250,247,.5)' }}>{company.hours}</span>
+              <span style={{ color: 'rgba(251,250,247,.5)' }}>KvK {company.kvk} · BTW {company.btw}</span>
             </div>
           </div>
 
@@ -83,6 +86,4 @@ export default function SiteFooter() {
     </footer>
   );
 }
-
-
 

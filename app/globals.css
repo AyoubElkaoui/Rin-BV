@@ -61,6 +61,7 @@ input:focus, select:focus, textarea:focus { box-shadow: 0 0 0 2px #E7C97F; }
 
 @media (max-width: 640px) {
   .content-width { padding-left: 20px; padding-right: 20px; }
+  [data-contact-grid] { grid-template-columns: minmax(0, 1fr) !important; }
   [data-two] { gap: 28px !important; }
   [data-two] > * { min-width: 0 !important; }
   [data-service-grid] { grid-template-columns: minmax(0, 1fr) !important; }

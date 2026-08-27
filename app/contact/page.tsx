@@ -17,7 +17,7 @@ const steps = [
 
 export default function ContactPage() {
   return (
-    <main data-page data-screen-label="Contact" style={{ paddingTop: 64, background: c.bg }}>
+    <main data-page data-screen-label="Contact" style={{ paddingTop: 96, background: c.bg }}>
       <section className="full-bleed" style={{ background: c.ink, color: c.bg, padding: 'clamp(38px,6vw,88px) 0' }}>
         <div className="content-width" data-two style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 'clamp(24px,5vw,84px)', alignItems: 'center' }}>
           <div>
@@ -29,7 +29,10 @@ export default function ContactPage() {
               Vertel ons wat er moet rijden, waar het opgehaald en afgeleverd wordt en wanneer het nodig is. Wij denken mee en komen terug met een voorstel dat past bij uw zending.
             </p>
             <div style={{ display: 'flex', flexWrap: 'wrap', gap: 10, marginTop: 28 }}>
-              <a data-btn-gold href={'mailto:' + company.email} style={{ display: 'inline-flex', padding: '15px 21px', borderRadius: 8, background: c.gold, color: c.ink, font: '700 14px/1 ' + font }}>
+              <a data-btn-gold href={company.phoneHref} style={{ display: 'inline-flex', padding: '15px 21px', borderRadius: 8, background: c.gold, color: c.ink, font: '700 14px/1 ' + font }}>
+                Spoed? Bel direct
+              </a>
+              <a data-btn-ghost href={'mailto:' + company.email} style={{ display: 'inline-flex', padding: '15px 20px', borderRadius: 8, background: 'rgba(251,250,247,.1)', color: c.bg, font: '600 14px/1 ' + font }}>
                 Mail de planning
               </a>
               <a data-btn-ghost href="#offerte" style={{ display: 'inline-flex', padding: '15px 20px', borderRadius: 8, background: 'rgba(251,250,247,.1)', color: c.bg, font: '600 14px/1 ' + font }}>
@@ -37,7 +40,7 @@ export default function ContactPage() {
               </a>
             </div>
             <div style={{ display: 'flex', flexWrap: 'wrap', gap: '8px 20px', marginTop: 30, font: '600 11px/1 ' + mono, letterSpacing: '.08em', textTransform: 'uppercase', color: 'rgba(251,250,247,.48)' }}>
-              <span>{company.email}</span><span>{company.hours}</span>
+              <span>Spoedtransport 24/7</span><span>{company.phone}</span><span>{company.hours}</span>
             </div>
           </div>
           <div style={{ display: 'flex', flexDirection: 'column', gap: 12 }}>
@@ -53,26 +56,29 @@ export default function ContactPage() {
       </section>
 
       <section className="full-bleed" style={{ background: c.sand, padding: 0 }}>
-        <div className="content-width" style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit,minmax(220px,1fr))', borderLeft: '1px solid ' + c.hairline }}>
+        <div className="content-width" data-contact-grid style={{ display: 'grid', gridTemplateColumns: 'repeat(4,minmax(0,1fr))', borderLeft: '1px solid ' + c.hairline }}>
           <a href={'mailto:' + company.email} style={{ display: 'flex', flexDirection: 'column', gap: 9, padding: '26px 22px 30px', borderRight: '1px solid ' + c.hairline }}>
             <span style={{ font: '700 11px/1 ' + mono, letterSpacing: '.12em', textTransform: 'uppercase', color: c.goldLink }}>E-mail</span>
             <span style={{ font: '700 clamp(17px,1.8vw,22px)/1.2 ' + display, letterSpacing: '-.02em' }}>{company.email}</span>
             <span style={{ font: '400 13.5px/1.6 ' + font, color: c.muted }}>Route, tijdvenster en documenten delen.</span>
           </a>
-          <a href="#offerte" style={{ display: 'flex', flexDirection: 'column', gap: 9, padding: '26px 22px 30px', borderRight: '1px solid ' + c.hairline }}>
-            <span style={{ font: '700 11px/1 ' + mono, letterSpacing: '.12em', textTransform: 'uppercase', color: c.goldLink }}>Offerte</span>
-            <span style={{ font: '700 clamp(19px,2.1vw,25px)/1.15 ' + display, letterSpacing: '-.03em' }}>Vraag een voorstel aan</span>
-            <span style={{ font: '400 13.5px/1.6 ' + font, color: c.muted }}>Vrijblijvend voor een losse rit of vaste route.</span>
+          <a href={company.phoneHref} style={{ display: 'flex', flexDirection: 'column', gap: 9, padding: '26px 22px 30px', borderRight: '1px solid ' + c.hairline }}>
+            <span style={{ font: '700 11px/1 ' + mono, letterSpacing: '.12em', textTransform: 'uppercase', color: c.goldLink }}>Telefonisch contact</span>
+            <span style={{ font: '700 clamp(19px,2.1vw,25px)/1.15 ' + display, letterSpacing: '-.03em' }}>{company.phone}</span>
+            <span style={{ font: '400 13.5px/1.6 ' + font, color: c.muted }}>Bel voor een losse rit, vaste route of directe spoedaanvraag.</span>
           </a>
           <div style={{ display: 'flex', flexDirection: 'column', gap: 9, padding: '26px 22px 30px', borderRight: '1px solid ' + c.hairline }}>
             <span style={{ font: '700 11px/1 ' + mono, letterSpacing: '.12em', textTransform: 'uppercase', color: c.goldLink }}>Bereikbaarheid</span>
-            <span style={{ font: '700 clamp(17px,1.8vw,22px)/1.2 ' + display, letterSpacing: '-.02em' }}>Ma–za 06:00–20:00</span>
-            <span style={{ font: '400 13.5px/1.6 ' + font, color: c.muted }}>Spoedaanvraag buiten kantooruren op aanvraag.</span>
+            <span style={{ font: '700 clamp(17px,1.8vw,22px)/1.2 ' + display, letterSpacing: '-.02em' }}>Ma–zo 09:00–17:00</span>
+            <span style={{ font: '400 13.5px/1.6 ' + font, color: c.muted }}>Reguliere planning overdag; spoed is 24/7 telefonisch bereikbaar.</span>
           </div>
           <div style={{ display: 'flex', flexDirection: 'column', gap: 9, padding: '26px 22px 30px', borderRight: '1px solid ' + c.hairline }}>
-            <span style={{ font: '700 11px/1 ' + mono, letterSpacing: '.12em', textTransform: 'uppercase', color: c.goldLink }}>Werkgebied</span>
-            <span style={{ font: '700 clamp(17px,1.8vw,22px)/1.2 ' + display, letterSpacing: '-.02em' }}>Nederland &amp; Europa</span>
-            <span style={{ font: '400 13.5px/1.6 ' + font, color: c.muted }}>Van spoedzending tot terugkerende route.</span>
+            <span style={{ font: '700 11px/1 ' + mono, letterSpacing: '.12em', textTransform: 'uppercase', color: c.goldLink }}>Bedrijfsgegevens</span>
+            <span style={{ font: '700 clamp(17px,1.8vw,22px)/1.2 ' + display, letterSpacing: '-.02em' }}>R.I.N. B.V.</span>
+            <span style={{ font: '400 13.5px/1.6 ' + font, color: c.muted }}>
+              {company.addressLines.map((line) => <span key={line} style={{ display: 'block' }}>{line}</span>)}
+              KvK {company.kvk} · BTW {company.btw}
+            </span>
           </div>
         </div>
       </section>
@@ -81,7 +87,7 @@ export default function ContactPage() {
         <div data-two style={{ display: 'grid', gridTemplateColumns: '.78fr 1.22fr', gap: 'clamp(28px,6vw,98px)', alignItems: 'start' }}>
           <div>
             <span className="eyebrow">Uw transportaanvraag</span>
-            <h2 style={{ margin: '21px 0 0', maxWidth: '15ch', font: '700 clamp(30px,4vw,52px)/1.05 ' + display, letterSpacing: '-.045em' }}>Twee adressen, een helder voorstel.</h2>
+            <h2 style={{ margin: '21px 0 0', maxWidth: '15ch', font: '700 clamp(30px,4vw,52px)/1.05 ' + display, letterSpacing: '-.045em' }}>Contactgegevens &amp; offerte</h2>
             <p style={{ margin: '22px 0 0', maxWidth: '38ch', font: '400 15.5px/1.75 ' + font, color: c.muted }}>
               Vul de gegevens in die we nodig hebben om uw rit te beoordelen. Met een telefoonnummer en e-mailadres weten we precies hoe we u kunnen bereiken met vragen of een voorstel.
             </p>

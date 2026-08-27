@@ -142,10 +142,11 @@ export default function OverOnsPage() {
               Zo weet u vooraf wie waarvoor verantwoordelijk is en welke terugkoppeling u na aflevering ontvangt.
             </p>
           </div>
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(2,minmax(0,1fr))', gap: 14 }}>
+          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3,minmax(0,1fr))', gap: 14 }}>
             {[
               { src: '/photos/niwo.png', label: 'NIWO-vergunning' },
               { src: '/photos/tln.png', label: 'TLN' },
+              { src: '/photos/paychecked.png', label: 'Paychecked' },
             ].map((logo) => (
               <div key={logo.label} style={{ minHeight: 154, padding: 18, borderRadius: 12, background: '#fff', display: 'grid', placeItems: 'center', boxSizing: 'border-box' }}>
                 <img src={logo.src} alt={logo.label} style={{ display: 'block', width: '100%', height: '100%', maxHeight: 112, objectFit: 'contain' }} />

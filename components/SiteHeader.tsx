@@ -43,7 +43,7 @@ export default function SiteHeader() {
 
   const active = (href) => (href === '/' ? pathname === '/' : pathname.startsWith(href));
   const pill = (on) => ({
-    padding: '10px 15px',
+    padding: '9px 12px',
     borderRadius: 8,
     background: on ? c.gold : 'transparent',
     color: on ? c.ink : c.bg,
@@ -60,8 +60,8 @@ export default function SiteHeader() {
             display: 'flex',
             alignItems: 'center',
             justifyContent: 'space-between',
-            gap: 18,
-            padding: '10px 12px 10px 14px',
+            gap: 10,
+            padding: '10px 6px 10px 8px',
             borderRadius: 10,
             background: 'transparent',
             boxShadow: 'none',
@@ -71,7 +71,7 @@ export default function SiteHeader() {
             <img src="/rin-logo.png" alt={company.name} style={{ height: 22, width: 'auto', display: 'block' }} />
           </Link>
 
-          <nav data-navdesk style={{ display: 'flex', alignItems: 'center', gap: 4 }}>
+          <nav data-navdesk style={{ display: 'flex', alignItems: 'center', gap: 2 }}>
             <Link href="/" style={pill(pathname === '/')}>Home</Link>
 
             <div
@@ -149,9 +149,9 @@ export default function SiteHeader() {
             <a
               data-btn-gold
               href={company.phoneHref}
-              style={{ marginLeft: 8, padding: '12px 20px', borderRadius: 8, background: c.gold, color: c.ink, font: '700 14px/1 ' + font }}
+              style={{ marginLeft: 5, padding: '11px 15px', borderRadius: 8, background: c.gold, color: c.ink, font: '700 13px/1 ' + font }}
             >
-              Direct contact
+              Spoed bellen
             </a>
           </nav>
 
@@ -230,7 +230,7 @@ export default function SiteHeader() {
             href={company.phoneHref}
             style={{ display: 'block', marginTop: 10, padding: 16, borderRadius: 8, background: c.ink, color: c.bg, textAlign: 'center', font: '700 15px/1 ' + font }}
           >
-            Contact opnemen
+            Spoed? Bellen
           </a>
         </div>
       ) : null}

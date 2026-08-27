@@ -2,14 +2,13 @@ export const company = {
   name: 'R.I.N. B.V.',
   tagline: 'Zakelijk koeriers- en transportbedrijf',
   // TODO: echte gegevens invullen
-  // Vul vóór livegang het echte telefoonnummer in. Tot die tijd verwijzen CTA's naar contact/e-mail.
-  phone: 'Telefoonnummer op aanvraag',
-  phoneHref: '/contact',
-  email: 'planning@rin-bv.nl',
-  addressLines: ['Vestigingsgegevens', 'Beschikbaar op aanvraag'],
-  kvk: 'Op aanvraag',
-  btw: 'Op aanvraag',
-  hours: 'ma–za 06:00–20:00 · spoedaanvraag buiten kantooruren op aanvraag',
+  phone: '033 20 23 485',
+  phoneHref: 'tel:+31332023485',
+  email: 'info@rinlogistiek.nl',
+  addressLines: ['Siliciumweg 53', '3812 SW Amersfoort'],
+  kvk: '87104822',
+  btw: 'NL864204693B01',
+  hours: 'ma–zo 09:00–17:00 · spoed 24/7',
 };
 
 export const nav = [
@@ -261,6 +260,3 @@ export const terms = [
 export const rideTypes = [
   'Spoedtransport', 'Sameday delivery', 'Vaste ritten / contract', 'Internationaal', 'Nachtrit', 'Medisch / waardevol',
 ];
-
-
-
