@@ -89,7 +89,13 @@ export async function POST(request: Request) {
     if (!resendResponse.ok) {
       const detail = await resendResponse.text().catch(() => '');
       console.error('Resend API error', resendResponse.status, detail.slice(0, 500));
-      return json(502, { error: 'De aanvraag kon nu niet worden verstuurd. Probeer het opnieuw of mail rechtstreeks.' });
+      if (resendResponse.status === 401) {
+        return json(502, { error: 'De Resend API-key is ongeldig of verlopen. Controleer de sleutel in Vercel.' });
+      }
+      if (resendResponse.status === 403 || resendResponse.status === 422) {
+        return json(502, { error: 'Resend accepteert de afzender niet. Verifieer rinlogistiek.nl en noreply@rinlogistiek.nl in Resend.' });
+      }
+      return json(502, { error: 'De mailprovider kon de aanvraag niet versturen. Controleer de Resend-instellingen in Vercel.' });
     }
   } catch (error) {
     console.error('Resend request failed', error);
