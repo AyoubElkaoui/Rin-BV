@@ -7,7 +7,7 @@ import SiteFooter from '@/components/SiteFooter';
 import Reveal from '@/components/Reveal';
 import JsonLd from '@/components/JsonLd';
 import { company } from '@/lib/site';
-import { organizationSchema, siteUrl, websiteSchema } from '@/lib/seo';
+import { ogImage, organizationSchema, siteUrl, websiteSchema } from '@/lib/seo';
 
 // Zelf gehost via next/font: geen verzoek naar Google, sneller en AVG-vriendelijk.
 const inter = Inter({ subsets: ['latin'], display: 'swap', variable: '--font-inter' });
@@ -34,8 +34,9 @@ export const metadata: Metadata = {
     title: 'R.I.N. B.V. | Zakelijk transport en koeriersdienst',
     description:
       'Zakelijk koeriers- en spoedtransport met één aanspreekpunt. Rechtstreeks van laadadres naar losadres, in Nederland en Europa.',
+    images: [ogImage],
   },
-  twitter: { card: 'summary_large_image' },
+  twitter: { card: 'summary_large_image', images: [ogImage.url] },
   robots: {
     index: true,
     follow: true,

@@ -4,6 +4,13 @@ import { company, services } from '@/lib/site';
 export const siteUrl = (process.env.NEXT_PUBLIC_SITE_URL || 'https://www.rinlogistiek.nl').replace(/\/$/, '');
 
 /** Paginapaden krijgen een slash aan het eind, net als de canonical-URL (next.config: trailingSlash). */
+export const ogImage = {
+  url: '/og.png',
+  width: 1200,
+  height: 630,
+  alt: 'R.I.N. B.V. — zakelijk koeriers- en spoedtransport',
+};
+
 export const absolute = (path: string) => {
   const clean = path.startsWith('/') ? path : '/' + path;
   const isFile = /\.[a-z0-9]+$/i.test(clean);
@@ -35,11 +42,13 @@ export function pageMeta({
       url,
       title,
       description,
+      images: [ogImage],
     },
     twitter: {
       card: 'summary_large_image',
       title,
       description,
+      images: [ogImage.url],
     },
   };
 }
