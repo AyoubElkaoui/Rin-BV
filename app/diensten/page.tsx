@@ -3,16 +3,38 @@ import PageHero from '@/components/PageHero';
 import ServiceCard from '@/components/ServiceCard';
 import { services, steps } from '@/lib/site';
 import { c, font, display } from '@/lib/theme';
+import JsonLd from '@/components/JsonLd';
+import { absolute, breadcrumbSchema, pageMeta } from '@/lib/seo';
 
-export const metadata = {
-  title: 'Diensten | R.I.N. B.V.',
+export const metadata = pageMeta({
+  title: 'Diensten',
   description: 'Bekijk de zakelijke transportdiensten van R.I.N. B.V.: spoedtransport, same-day delivery, vaste ritten, internationaal, nachttransport en medisch vervoer.',
+  path: '/diensten',
   keywords: ['zakelijk transport', 'spoedkoerier', 'sameday delivery', 'contractvervoer', 'nachttransport'],
-};
+});
 
 export default function DienstenPage() {
   return (
     <main data-page data-screen-label="Diensten" style={{ paddingTop: 96 }}>
+      <JsonLd
+        data={[
+          breadcrumbSchema([
+            { name: 'Home', path: '/' },
+            { name: 'Diensten', path: '/diensten' },
+          ]),
+          {
+            '@context': 'https://schema.org',
+            '@type': 'ItemList',
+            name: 'Transportdiensten van R.I.N. B.V.',
+            itemListElement: services.map((service, index) => ({
+              '@type': 'ListItem',
+              position: index + 1,
+              name: service.title,
+              url: absolute('/diensten/' + service.slug),
+            })),
+          },
+        ]}
+      />
       <section style={{ maxWidth: 1280, margin: '0 auto', padding: 'clamp(20px,3vw,40px) clamp(20px,4vw,48px) 0' }}>
         <PageHero
           eyebrow="Diensten"

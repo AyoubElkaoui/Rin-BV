@@ -1,28 +1,48 @@
 'use client';
 
-import { useState, type FormEvent } from 'react';
+import Link from 'next/link';
+import { useRef, useState, type FormEvent } from 'react';
 import { company, rideTypes } from '@/lib/site';
 import { c, font, input, label, display } from '@/lib/theme';
 import { sendQuote, type QuotePayload } from '@/lib/quote';
+import Turnstile, { captchaEnabled } from '@/components/Turnstile';
 
 export default function QuoteForm() {
   const [status, setStatus] = useState<'idle' | 'sending' | 'sent' | 'error'>('idle');
   const [error, setError] = useState('');
+  const [captchaToken, setCaptchaToken] = useState('');
+  const [captchaKey, setCaptchaKey] = useState(0);
+  const openedAt = useRef(Date.now());
 
   const onSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     const form = e.currentTarget;
-    const payload = Object.fromEntries(new FormData(form).entries()) as QuotePayload;
+
+    if (captchaEnabled && !captchaToken) {
+      setStatus('error');
+      setError('Bevestig eerst de beveiligingscheck onder het formulier.');
+      return;
+    }
+
+    const payload = {
+      ...Object.fromEntries(new FormData(form).entries()),
+      captchaToken,
+      openedAt: String(openedAt.current),
+    } as QuotePayload;
     setStatus('sending');
     setError('');
 
     try {
       await sendQuote(payload);
       form.reset();
+      openedAt.current = Date.now();
       setStatus('sent');
     } catch (err) {
       setStatus('error');
       setError(err instanceof Error ? err.message : 'De aanvraag kon niet worden verstuurd.');
+    } finally {
+      setCaptchaToken('');
+      setCaptchaKey((k) => k + 1);
     }
   };
 
@@ -97,6 +117,9 @@ export default function QuoteForm() {
             style={{ ...input, font: '400 14.5px/1.55 ' + font, resize: 'vertical' }}
           />
         </label>
+        <div style={{ gridColumn: '1/-1' }}>
+          <Turnstile onToken={setCaptchaToken} resetKey={captchaKey} />
+        </div>
         <div style={{ gridColumn: '1/-1', display: 'flex', flexWrap: 'wrap', alignItems: 'center', gap: 16 }}>
           <button
             data-btn-dark
@@ -106,7 +129,9 @@ export default function QuoteForm() {
           >
             {status === 'sending' ? 'Bezig met versturen…' : 'Verstuur aanvraag'}
           </button>
-          <span style={{ font: '400 12.5px/1.5 ' + font, color: 'rgba(28,27,24,.45)' }}>Vrijblijvend · geen verplichtingen</span>
+          <span style={{ font: '400 12.5px/1.5 ' + font, color: 'rgba(28,27,24,.45)' }}>
+            Vrijblijvend · geen verplichtingen · <Link href="/privacy" style={{ color: c.goldLink, textDecoration: 'underline' }}>privacyverklaring</Link>
+          </span>
         </div>
         {status === 'error' ? <div role="alert" style={{ gridColumn: '1/-1', padding: '12px 14px', borderRadius: 8, background: '#F8E8E4', color: '#8E3025', font: '500 13px/1.5 ' + font }}>{error}</div> : null}
       </form>

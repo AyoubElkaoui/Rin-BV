@@ -2,12 +2,14 @@ import Link from 'next/link';
 import QuoteForm from '@/components/QuoteForm';
 import { company } from '@/lib/site';
 import { c, font, display, mono } from '@/lib/theme';
+import { pageMeta } from '@/lib/seo';
 
-export const metadata = {
-  title: 'Contact & offerte aanvragen | R.I.N. B.V.',
+export const metadata = pageMeta({
+  title: 'Contact & offerte aanvragen',
   description: 'Neem contact op met R.I.N. B.V. voor spoedtransport, same-day delivery, vaste ritten of internationaal zakelijk vervoer. Vraag vrijblijvend een voorstel aan.',
+  path: '/contact',
   keywords: ['contact transportbedrijf', 'offerte zakelijk transport', 'spoedtransport aanvragen', 'koerier aanvragen', 'transport offerte Nederland'],
-};
+});
 
 const steps = [
   { n: '01', t: 'U deelt de basis', d: 'Laadadres, losadres, zending en gewenst tijdvenster.' },
@@ -45,7 +47,7 @@ export default function ContactPage() {
           </div>
           <div style={{ display: 'flex', flexDirection: 'column', gap: 12 }}>
             <div style={{ position: 'relative', overflow: 'hidden', borderRadius: 14, aspectRatio: '4 / 3', background: c.sand }}>
-              <img src="/photos/small-van-contact.jpg" alt="Koerier stapt uit een bestelbus met een zakelijke zending" style={{ display: 'block', width: '100%', height: '100%', objectFit: 'cover' }} />
+              <img src="/photos/small-van-contact.webp" alt="Koerier stapt uit een bestelbus met een zakelijke zending" loading="lazy" decoding="async" style={{ display: 'block', width: '100%', height: '100%', objectFit: 'cover' }} />
             </div>
             <div style={{ display: 'flex', alignItems: 'center', gap: 12, padding: '13px 15px', borderRadius: 9, background: 'rgba(251,250,247,.08)', color: 'rgba(251,250,247,.65)', font: '400 13px/1.4 ' + font }}>
               <span style={{ width: 7, height: 7, flex: 'none', borderRadius: '50%', background: c.gold }} />

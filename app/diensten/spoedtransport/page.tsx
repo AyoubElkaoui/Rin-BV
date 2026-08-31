@@ -1,14 +1,16 @@
 import ServiceDetail from '@/components/ServiceDetail';
 import { services } from '@/lib/site';
+import { pageMeta } from '@/lib/seo';
 
 const slug = 'spoedtransport';
 const svc = services.find((s) => s.slug === slug);
 
-export const metadata = {
-  title: svc.title + ' | R.I.N. B.V.',
-  description: svc.lead + " Zakelijk transport met duidelijke afspraken en één aanspreekpunt.",
-  keywords: [svc.title, "zakelijk transport", "koeriersdienst"],
-};
+export const metadata = pageMeta({
+  title: svc.seoTitle,
+  description: svc.seo,
+  path: '/diensten/spoedtransport',
+  keywords: [svc.title, 'zakelijk transport', 'koeriersdienst', 'transportbedrijf Nederland'],
+});
 
 export default function Page() {
   return <ServiceDetail slug={slug} />;

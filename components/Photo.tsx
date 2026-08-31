@@ -5,7 +5,7 @@ import { c, font } from '@/lib/theme';
  * Foto met nette fallback. Zolang het bestand niet in /public/photos staat,
  * blijft de placeholder-tekst zichtbaar (de <img> valt weg bij een 404).
  */
-export default function Photo({ src, alt, label, radius = 14, style, ...rest }: { src?: string | null; alt?: string; label?: string; radius?: number; style?: React.CSSProperties; [key: string]: unknown }) {
+export default function Photo({ src, alt, label, radius = 14, priority = false, style, ...rest }: { src?: string | null; alt?: string; label?: string; radius?: number; priority?: boolean; style?: React.CSSProperties; [key: string]: unknown }) {
   return (
     <div
       {...rest}
@@ -37,6 +37,9 @@ export default function Photo({ src, alt, label, radius = 14, style, ...rest }: 
         <img
           src={src}
           alt={alt || label || ''}
+          loading={priority ? 'eager' : 'lazy'}
+          decoding="async"
+          fetchPriority={priority ? 'high' : 'auto'}
           style={{ position: 'relative', display: 'block', width: '100%', height: '100%', objectFit: 'cover' }}
         />
       ) : null}

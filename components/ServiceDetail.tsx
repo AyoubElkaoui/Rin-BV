@@ -1,8 +1,10 @@
 import Link from 'next/link';
 import Faq from '@/components/Faq';
 import Photo from '@/components/Photo';
+import JsonLd from '@/components/JsonLd';
 import { company, services } from '@/lib/site';
 import { c, font, display, mono } from '@/lib/theme';
+import { breadcrumbSchema, faqSchema, serviceSchema } from '@/lib/seo';
 
 export default function ServiceDetail({ slug }: { slug: string }) {
   const svc = services.find((s) => s.slug === slug);
@@ -12,6 +14,17 @@ export default function ServiceDetail({ slug }: { slug: string }) {
 
   return (
     <main data-page data-screen-label="Dienst" style={{ paddingTop: 64, background: c.bg }}>
+      <JsonLd
+        data={[
+          serviceSchema(svc),
+          faqSchema(svc.faqs),
+          breadcrumbSchema([
+            { name: 'Home', path: '/' },
+            { name: 'Diensten', path: '/diensten' },
+            { name: svc.title, path: '/diensten/' + svc.slug },
+          ]),
+        ]}
+      />
       <section className="full-bleed" style={{ background: c.ink, color: c.bg, padding: 'clamp(28px,4vw,56px) 0' }}>
         <div className="content-width" data-two style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 'clamp(18px,2.4vw,26px)', alignItems: 'start' }}>
           <div style={{ padding: 'clamp(12px,2vw,30px) 0', color: c.bg }}>
@@ -31,7 +44,7 @@ export default function ServiceDetail({ slug }: { slug: string }) {
               </Link>
             </div>
           </div>
-          <Photo src={svc.photo} alt={svc.title + ' voor zakelijke zendingen'} label="Foto: transport en zending" style={{ aspectRatio: '3 / 2', minHeight: 0, alignSelf: 'start' }} />
+          <Photo src={svc.photo} alt={svc.title + ' voor zakelijke zendingen'} label="Foto: transport en zending" priority style={{ aspectRatio: '3 / 2', minHeight: 0, alignSelf: 'start' }} />
         </div>
       </section>
 

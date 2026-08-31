@@ -1,28 +1,48 @@
 'use client';
 
-import { useState, type FormEvent } from 'react';
+import Link from 'next/link';
+import { useRef, useState, type FormEvent } from 'react';
 import { rideTypes } from '@/lib/site';
 import { c, font, input, label } from '@/lib/theme';
 import { sendQuote, type QuotePayload } from '@/lib/quote';
+import Turnstile, { captchaEnabled } from '@/components/Turnstile';
 
 export default function QuickQuote() {
   const [status, setStatus] = useState<'idle' | 'sending' | 'sent' | 'error'>('idle');
   const [error, setError] = useState('');
+  const [captchaToken, setCaptchaToken] = useState('');
+  const [captchaKey, setCaptchaKey] = useState(0);
+  const openedAt = useRef(Date.now());
 
   const onSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     const form = e.currentTarget;
-    const payload = Object.fromEntries(new FormData(form).entries()) as QuotePayload;
+
+    if (captchaEnabled && !captchaToken) {
+      setStatus('error');
+      setError('Bevestig eerst de beveiligingscheck onder het formulier.');
+      return;
+    }
+
+    const payload = {
+      ...Object.fromEntries(new FormData(form).entries()),
+      captchaToken,
+      openedAt: String(openedAt.current),
+    } as QuotePayload;
     setStatus('sending');
     setError('');
 
     try {
       await sendQuote(payload);
       form.reset();
+      openedAt.current = Date.now();
       setStatus('sent');
     } catch (err) {
       setStatus('error');
       setError(err instanceof Error ? err.message : 'De aanvraag kon niet worden verstuurd.');
+    } finally {
+      setCaptchaToken('');
+      setCaptchaKey((k) => k + 1);
     }
   };
 
@@ -83,6 +103,9 @@ export default function QuickQuote() {
           <textarea name="bericht" rows={3} placeholder="Aantal pallets/colli, gewicht, afmetingen, temperatuur, tijdvenster…" style={{ ...input, font: '400 14px/1.55 ' + font, resize: 'vertical' }} />
         </label>
       </div>
+      <div style={{ marginTop: 14 }}>
+        <Turnstile onToken={setCaptchaToken} resetKey={captchaKey} />
+      </div>
       <button
         data-btn-dark
         type="submit"
@@ -102,6 +125,10 @@ export default function QuickQuote() {
       >
           {status === 'sending' ? 'Bezig met versturen…' : 'Aanvraag versturen'}
       </button>
+      <div style={{ marginTop: 10, font: '400 11.5px/1.5 ' + font, color: 'rgba(28,27,24,.45)' }}>
+        Wij gebruiken uw gegevens alleen om uw aanvraag te behandelen. Zie de{' '}
+        <Link href="/privacy" style={{ color: c.goldLink, textDecoration: 'underline' }}>privacyverklaring</Link>.
+      </div>
       {status === 'sent' ? (
         <div
           style={{

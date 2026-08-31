@@ -2,12 +2,14 @@ import Link from 'next/link';
 import Photo from '@/components/Photo';
 import { story } from '@/lib/site';
 import { c, font, display, mono } from '@/lib/theme';
+import { pageMeta } from '@/lib/seo';
 
-export const metadata = {
-  title: 'Over ons | R.I.N. B.V.',
+export const metadata = pageMeta({
+  title: 'Over ons',
   description: 'Maak kennis met R.I.N. B.V.: een persoonlijk Nederlands transportbedrijf voor spoedzendingen, same-day delivery, vaste ritten en internationaal vervoer.',
+  path: '/over-ons',
   keywords: ['over R.I.N. B.V.', 'Nederlands transportbedrijf', 'zakelijk transport', 'koeriersdienst bedrijven', 'NIWO transport', 'TLN transport'],
-};
+});
 
 const promise = [
   { v: '1 planner', l: 'Eén aanspreekpunt voor uw rit' },
@@ -50,7 +52,7 @@ export default function OverOnsPage() {
               <span>Zakelijk transport</span><span>Rechtstreeks geregeld</span><span>Nederland &amp; Europa</span>
             </div>
           </div>
-          <Photo src="/photos/small-van-loading.jpg" alt="Koerier laadt pakketten in een bestelbus" label="Foto: koerier laadt een bestelbus" style={{ aspectRatio: '4 / 3', minHeight: 0, alignSelf: 'start' }} />
+          <Photo src="/photos/small-van-loading.webp" alt="Koerier laadt pakketten in een bestelbus" label="Foto: koerier laadt een bestelbus" priority style={{ aspectRatio: '4 / 3', minHeight: 0, alignSelf: 'start' }} />
         </div>
       </section>
 
@@ -115,7 +117,7 @@ export default function OverOnsPage() {
 
       <section style={{ maxWidth: 1280, margin: '0 auto', padding: 'clamp(56px,8vw,108px) clamp(20px,4vw,48px)' }}>
         <div data-two style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 'clamp(26px,5vw,78px)', alignItems: 'center' }}>
-          <Photo src="/photos/small-van-cargo.jpg" alt="Goederen veilig geladen in een bestelbus" label="Foto: zending in de bestelbus" style={{ aspectRatio: '3 / 2', minHeight: 0 }} />
+          <Photo src="/photos/small-van-cargo.webp" alt="Goederen veilig geladen in een bestelbus" label="Foto: zending in de bestelbus" style={{ aspectRatio: '3 / 2', minHeight: 0 }} />
           <div>
             <span className="eyebrow">Voor wie we rijden</span>
             <h2 style={{ margin: '21px 0 0', maxWidth: '17ch', font: '700 clamp(29px,3.6vw,48px)/1.06 ' + display, letterSpacing: '-.045em' }}>Een partner voor uw dagelijkse operatie.</h2>
@@ -144,12 +146,12 @@ export default function OverOnsPage() {
           </div>
           <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3,minmax(0,1fr))', gap: 14 }}>
             {[
-              { src: '/photos/niwo.png', label: 'NIWO-vergunning' },
-              { src: '/photos/tln.png', label: 'TLN' },
-              { src: '/photos/paychecked.png', label: 'Paychecked' },
+              { src: '/photos/niwo.webp', label: 'NIWO-vergunning' },
+              { src: '/photos/tln.webp', label: 'TLN' },
+              { src: '/photos/paychecked.webp', label: 'Paychecked' },
             ].map((logo) => (
               <div key={logo.label} style={{ minHeight: 154, padding: 18, borderRadius: 12, background: '#fff', display: 'grid', placeItems: 'center', boxSizing: 'border-box' }}>
-                <img src={logo.src} alt={logo.label} style={{ display: 'block', width: '100%', height: '100%', maxHeight: 112, objectFit: 'contain' }} />
+                <img src={logo.src} alt={logo.label} loading="lazy" decoding="async" style={{ display: 'block', width: '100%', height: '100%', maxHeight: 112, objectFit: 'contain' }} />
               </div>
             ))}
           </div>

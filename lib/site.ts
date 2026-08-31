@@ -1,7 +1,6 @@
 export const company = {
   name: 'R.I.N. B.V.',
   tagline: 'Zakelijk koeriers- en transportbedrijf',
-  // TODO: echte gegevens invullen
   phone: '033 20 23 485',
   phoneHref: 'tel:+31332023485',
   email: 'info@rinlogistiek.nl',
@@ -28,8 +27,8 @@ export const services = [
     lead: 'Voor zendingen die extra aandacht en een snelle reactie vragen. We stemmen ophaal- en levertijd vooraf met u af.',
     seoTitle: 'Spoedtransport voor zakelijke zendingen',
     seo: 'Een productielijn die stilvalt, een onderdeel dat vandaag nog op locatie moet zijn of documenten die niet kunnen wachten: R.I.N. B.V. organiseert spoedtransport met een vaste planner. We bespreken de route, het tijdvenster en het passende voertuig voordat de rit vertrekt.',
-    photo: '/photos/small-van-sunset.jpg',
-    detailPhoto: '/photos/small-van-team.jpg',
+    photo: '/photos/small-van-sunset.webp',
+    detailPhoto: '/photos/small-van-team.webp',
     faqs: [
       { q: 'Wanneer is spoedtransport geschikt?', a: 'Spoedtransport past bij zendingen die niet kunnen wachten op een reguliere route, zoals een kritisch onderdeel, productiedocumenten of een nalevering. We beoordelen eerst de route, het gewenste tijdvenster en de beschikbare capaciteit.' },
       { q: 'Rijdt mijn zending rechtstreeks naar de bestemming?', a: 'Als dat vooraf is afgesproken, rijdt de zending rechtstreeks van laadadres naar losadres zonder onnodige hub of overdracht. De gekozen uitvoering leggen we vast in het voorstel.' },
@@ -58,8 +57,8 @@ export const services = [
     lead: 'Uw klant verwacht het vandaag. We plannen ophalen en aflevering binnen dezelfde werkdag wanneer route en capaciteit dat toelaten.',
     seoTitle: 'Sameday delivery in Nederland en België',
     seo: 'Met same-day delivery houdt u beloftes aan uw klanten zonder uw eigen planning om te gooien. Wij halen de zending op het afgesproken moment op en leveren die dezelfde werkdag af, met een digitale terugkoppeling na de aflevering.',
-    photo: '/photos/small-van-box.jpg',
-    detailPhoto: '/photos/small-van-delivery.jpg',
+    photo: '/photos/small-van-box.webp',
+    detailPhoto: '/photos/small-van-delivery.webp',
     faqs: [
       { q: 'Wat betekent same-day delivery bij R.I.N. B.V.?', a: 'Same-day delivery betekent dat we uw zakelijke zending ophalen en dezelfde werkdag afleveren, wanneer route en capaciteit dat toelaten. Vooraf stemmen we het tijdvenster en de haalbaarheid met u af.' },
       { q: 'Kan ik een specifiek tijdvenster afspreken?', a: 'Ja. Geef bij uw aanvraag de openingstijden, gewenste aankomst en eventuele laad- of losinstructies door. We verwerken dit in de planning en bevestigen wat uitvoerbaar is.' },
@@ -88,8 +87,8 @@ export const services = [
     lead: 'Voor terugkerende ritten leggen we samen de route, stops, laadmomenten en gewenste terugkoppeling vast. Frequentie, voertuig en tarief stemmen we af op uw planning.',
     seoTitle: 'Vaste ritten en contractvervoer met vaste capaciteit',
     seo: 'Voor dagelijkse distributie, pendelritten en vaste leveringen krijgt u één herkenbare werkwijze. Samen leggen we route, stops, laadtijden en contactpersonen vast. Zo weet uw team waar het aan toe is en blijft de uitvoering voorspelbaar.',
-    photo: '/photos/small-van-arranging.jpg',
-    detailPhoto: '/photos/small-van-clipboard.jpg',
+    photo: '/photos/small-van-arranging.webp',
+    detailPhoto: '/photos/small-van-clipboard.webp',
     faqs: [
       { q: 'Hoe werkt een vaste rit of contractrit?', a: 'We brengen eerst uw route, stops, laadmomenten en gewenste terugkoppeling in kaart. Daarna maken we een voorstel voor frequentie, voertuig, tijdvenster en tarief dat past bij uw dagelijkse planning.' },
       { q: 'Kunnen route of volumes later wijzigen?', a: 'Dat kan. Geef veranderingen in stops, volume of tijden zo vroeg mogelijk door. We bekijken samen welke aanpassing nodig is en bevestigen de nieuwe afspraken vooraf.' },
@@ -118,8 +117,8 @@ export const services = [
     lead: 'Naar België, Duitsland, Frankrijk of verder Europa in: wij rijden rechtstreeks onder CMR. Eén rit, één verantwoordelijke, geen overdracht aan onbekende partijen.',
     seoTitle: 'Internationaal koeriersvervoer vanuit Nederland',
     seo: 'Internationale spoedzendingen vragen om voorbereiding. Wij controleren adressen, tijdvensters en CMR-informatie vooraf en rijden rechtstreeks naar België, Duitsland, Frankrijk en andere bestemmingen in Europa. U houdt één aanspreekpunt voor de hele rit.',
-    photo: '/photos/small-van-city.jpg',
-    detailPhoto: '/photos/small-van-documents.jpg',
+    photo: '/photos/small-van-city.webp',
+    detailPhoto: '/photos/small-van-documents.webp',
     faqs: [
       { q: 'Naar welke Europese landen rijden jullie?', a: 'We verzorgen ritten vanuit Nederland naar onder meer België, Duitsland en Frankrijk en bekijken ook andere Europese bestemmingen. Beschikbaarheid, route en gewenste aankomst stemmen we per aanvraag af.' },
       { q: 'Welke documenten zijn nodig voor internationaal vervoer?', a: 'Voor de meeste ritten is een correcte CMR-instructie nodig. Afhankelijk van goederen en route kunnen aanvullende douane- of productdocumenten gelden; we bespreken dit vooraf.' },
@@ -148,8 +147,8 @@ export const services = [
     lead: 'We laden in de avond of nacht en stemmen het aflevermoment af op de openingstijd van uw locatie.',
     seoTitle: 'Nachttransport voor levering vóór opening',
     seo: 'Nachttransport geeft uw magazijn of productielocatie een rustige start. We plannen het laadmoment, maken afspraken over toegang en leveren de zending af voordat uw eerste ploeg begint. Ideaal voor voorraad, onderdelen en materialen die direct nodig zijn.',
-    photo: '/photos/small-van-sitting.jpg',
-    detailPhoto: '/photos/small-van-route.jpg',
+    photo: '/photos/small-van-sitting.webp',
+    detailPhoto: '/photos/small-van-route.webp',
     faqs: [
       { q: 'Wanneer is nachttransport een goede oplossing?', a: 'Nachttransport past wanneer een locatie vóór opening moet zijn bevoorraad, of wanneer u dagdrukte en spits wilt vermijden. We stemmen het laad- en aflevervenster af op uw ploegendienst.' },
       { q: 'Hoe werkt aflevering bij een gesloten locatie?', a: 'We leggen vooraf vast hoe de chauffeur toegang krijgt, bijvoorbeeld via een sleutelkluis, poortcode of nachtportier. Zonder duidelijke toegangsinstructie plannen we de rit niet definitief in.' },
@@ -178,8 +177,8 @@ export const services = [
     lead: 'Temperatuurgevoelige of waardevolle lading vraagt om een duidelijke keten. We bespreken de vereisten vooraf en leggen registratie en dekking schriftelijk vast.',
     seoTitle: 'Medisch en waardevol transport met registratie',
     seo: 'Voor laboratoria, zorginstellingen en bedrijven met kostbare goederen is aantoonbare zorgvuldigheid essentieel. We stemmen verpakking, temperatuur en overdracht vooraf af en leveren de beschikbare registratie en het bewijs van aflevering mee.',
-    photo: '/photos/stock-lab-pexels.jpg',
-    detailPhoto: '/photos/stock-medical-pexels.jpg',
+    photo: '/photos/stock-lab-pexels.webp',
+    detailPhoto: '/photos/stock-medical-pexels.webp',
     faqs: [
       { q: 'Hoe gaan jullie om met temperatuurgevoelige zendingen?', a: 'We bespreken vooraf de vereiste temperatuur, verpakking, maximale transportduur en eventuele registratie. Alleen wanneer de afgesproken voorwaarden haalbaar zijn, bevestigen we de rit.' },
       { q: 'Kunnen waardevolle apparatuur en goederen worden vervoerd?', a: 'Ja, mits we de handling, verpakking, toegangsafspraken en eventuele aanvullende dekking vooraf schriftelijk vastleggen. Zo is duidelijk wie welke verantwoordelijkheid draagt.' },
@@ -255,6 +254,70 @@ export const terms = [
   { t: 'Aansprakelijkheid', d: 'Beperkt conform AVC/CMR. Aanvullende dekking is mogelijk in overleg en wordt vooraf schriftelijk vastgelegd.' },
   { t: 'Betaling', d: 'Betaaltermijn 14 dagen na factuurdatum, tenzij anders overeengekomen in een contractafspraak.' },
   { t: 'Annulering', d: 'Kosteloos tot het moment dat de chauffeur onderweg is naar de laadlocatie; daarna worden gemaakte kilometers in rekening gebracht.' },
+];
+
+export const privacyUpdated = '31 augustus 2026';
+
+export const privacy: { t: string; p: string[] }[] = [
+  {
+    t: 'Wie verwerkt uw gegevens',
+    p: [
+      'R.I.N. B.V. is verantwoordelijk voor de verwerking van persoonsgegevens die via deze website of per e-mail en telefoon binnenkomen. U bereikt ons op Siliciumweg 53, 3812 SW Amersfoort, via info@rinlogistiek.nl of op 033 20 23 485. Ons KvK-nummer is 87104822.',
+    ],
+  },
+  {
+    t: 'Welke gegevens wij verwerken',
+    p: [
+      'Vult u het aanvraag- of contactformulier in, dan verwerken wij: bedrijfsnaam, naam van de contactpersoon, e-mailadres, telefoonnummer, ophaal- en afleveradres, het soort transport, de gewenste datum en de omschrijving van uw zending.',
+      'Daarnaast verwerken onze hosting- en beveiligingspartners technische gegevens zoals uw IP-adres, browsertype en het tijdstip van uw bezoek. Die gegevens gebruiken wij alleen om de website te laten werken en misbruik tegen te gaan.',
+      'Wij vragen nooit om bijzondere persoonsgegevens en verzoeken u die ook niet in het opmerkingenveld te vermelden.',
+    ],
+  },
+  {
+    t: 'Waarom en op welke grondslag',
+    p: [
+      'Uw aanvraag beoordelen, een voorstel doen en het transport uitvoeren: noodzakelijk voor de uitvoering van een overeenkomst of stappen daaraan voorafgaand (artikel 6 lid 1 sub b AVG).',
+      'Contact opnemen over een lopende rit en onze dienstverlening verbeteren: gerechtvaardigd belang van een goede bedrijfsvoering (artikel 6 lid 1 sub f AVG).',
+      'De website beveiligen tegen spam en misbruik: gerechtvaardigd belang bij een werkend en veilig formulier (artikel 6 lid 1 sub f AVG).',
+      'Facturen en vervoersdocumenten bewaren: wettelijke verplichting (artikel 6 lid 1 sub c AVG).',
+    ],
+  },
+  {
+    t: 'Hoe lang wij gegevens bewaren',
+    p: [
+      'Aanvragen die niet tot een opdracht leiden bewaren wij maximaal twaalf maanden, zodat wij een eerder gesprek nog kunnen terugvinden.',
+      'Gegevens die bij een uitgevoerde opdracht horen, bewaren wij zeven jaar. Dat is de fiscale bewaarplicht voor onze administratie.',
+      'Logbestanden met technische gegevens worden door onze leveranciers binnen enkele weken automatisch verwijderd.',
+    ],
+  },
+  {
+    t: 'Met wie wij gegevens delen',
+    p: [
+      'Wij verkopen uw gegevens niet en gebruiken ze niet voor advertenties. Wel schakelen wij dienstverleners in die namens ons gegevens verwerken, met wie wij een verwerkersovereenkomst hebben: Vercel (hosting van de website), Resend (bezorging van de formuliermail) en Cloudflare (Turnstile-spambeveiliging op het formulier).',
+      'Is voor de uitvoering van uw rit een vaste vervoerspartner nodig, dan delen wij alleen de gegevens die voor die rit noodzakelijk zijn, zoals laad- en losadres en een contactpersoon ter plaatse.',
+      'Verder verstrekken wij gegevens uitsluitend wanneer wij daartoe wettelijk verplicht zijn.',
+    ],
+  },
+  {
+    t: 'Cookies en meetgegevens',
+    p: [
+      'Deze website plaatst geen tracking- of advertentiecookies en gebruikt geen bezoekersstatistieken. De lettertypen worden vanaf onze eigen server geladen, dus er gaat daarvoor geen verzoek naar derden.',
+      'De spambeveiliging van Cloudflare Turnstile plaatst een technisch noodzakelijk item in uw browser om te bepalen of u een echte bezoeker bent. Turnstile volgt u niet over andere websites en bouwt geen profiel op.',
+    ],
+  },
+  {
+    t: 'Beveiliging',
+    p: [
+      'De website werkt volledig via een beveiligde https-verbinding. Aanvragen gaan rechtstreeks naar onze mailbox en zijn alleen toegankelijk voor de medewerkers die uw rit behandelen. Onze systemen zijn beveiligd met sterke wachtwoorden en tweestapsverificatie.',
+    ],
+  },
+  {
+    t: 'Uw rechten',
+    p: [
+      'U mag ons vragen welke gegevens wij van u hebben, ze laten corrigeren of verwijderen, de verwerking laten beperken of uw gegevens in een overdraagbaar bestand ontvangen. Ook kunt u bezwaar maken tegen verwerking op grond van gerechtvaardigd belang.',
+      'Stuur uw verzoek naar info@rinlogistiek.nl. Wij reageren binnen vier weken. Om misbruik te voorkomen kunnen wij u vragen uw verzoek te bevestigen vanaf het e-mailadres dat bij ons bekend is.',
+    ],
+  },
 ];
 
 export const rideTypes = [

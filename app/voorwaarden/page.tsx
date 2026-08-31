@@ -1,11 +1,13 @@
 import { terms } from '@/lib/site';
 import { c, font, display, mono } from '@/lib/theme';
+import { pageMeta } from '@/lib/seo';
 
-export const metadata = {
-  title: 'Algemene voorwaarden | R.I.N. B.V.',
+export const metadata = pageMeta({
+  title: 'Algemene voorwaarden',
   description: 'AVC-voorwaarden voor binnenlands wegvervoer en het CMR-verdrag voor internationaal wegvervoer.',
+  path: '/voorwaarden',
   keywords: ['AVC voorwaarden transport', 'CMR vervoer', 'transportvoorwaarden'],
-};
+});
 
 export default function VoorwaardenPage() {
   return (

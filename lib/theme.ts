@@ -15,12 +15,12 @@ export const c = {
 };
 
 // Body / UI: neutrale, zakelijke grotesque.
-export const font = "'Inter',Helvetica,Arial,sans-serif";
+export const font = "var(--font-inter),'Inter',Helvetica,Arial,sans-serif";
 // Koppen: verfijnde serif voor een premium, gevestigde uitstraling.
 // Eén heldere groteske voor alle koppen en body: rustig, zakelijk en goed leesbaar.
-export const display = "'Inter',Helvetica,Arial,sans-serif";
+export const display = "var(--font-inter),'Inter',Helvetica,Arial,sans-serif";
 // Kleine labels / eyebrows: Inter in hoofdletters met tracking (zie .eyebrow in globals).
-export const mono = "'Inter',Helvetica,Arial,sans-serif";
+export const mono = "var(--font-inter),'Inter',Helvetica,Arial,sans-serif";
 
 export const shell = { maxWidth: 1280, margin: '0 auto', padding: '0 clamp(20px,4vw,48px)' };
 export const cardBox = { background: c.card, boxShadow: 'inset 0 0 0 1px ' + c.hairline, borderRadius: 12 };

@@ -1,18 +1,21 @@
 import Link from 'next/link';
 import QuickQuote from '@/components/QuickQuote';
 import Faq from '@/components/Faq';
-import { company, services, stats, routes, steps, proof, values } from '@/lib/site';
+import JsonLd from '@/components/JsonLd';
+import { company, services, stats, routes, steps, proof, values, faqs } from '@/lib/site';
 import { c, font, display } from '@/lib/theme';
+import { faqSchema, pageMeta } from '@/lib/seo';
 
-export const metadata = {
+export const metadata = pageMeta({
   title: 'Zakelijk transport en koeriersdienst | R.I.N. B.V.',
   description:
     'Zakelijk transport voor bedrijven: spoedtransport, same-day delivery, vaste ritten en internationaal vervoer met één aanspreekpunt.',
+  path: '/',
   keywords: ['zakelijk transport', 'spoedkoerier', 'sameday delivery Nederland', 'internationaal koeriersvervoer'],
-};
+});
 
-const heroImg = '/photos/small-van-hero.jpg';
-const whyImg = '/photos/small-van-package.jpg';
+const heroImg = '/photos/small-van-hero.webp';
+const whyImg = '/photos/small-van-package.webp';
 
 const MAXW = 1280;
 const PAD = 'clamp(24px,4vw,80px)';
@@ -24,6 +27,7 @@ const btnDark = { display: 'inline-flex', alignItems: 'center', gap: 10, padding
 export default function HomePage() {
   return (
     <main data-screen-label="Home" style={{ paddingTop: 'clamp(88px,10vw,132px)' }}>
+      <JsonLd data={faqSchema(faqs)} />
       {/* ================= HERO ================= */}
       <section style={{ ...shell, paddingTop: 'clamp(24px,3vw,52px)', paddingBottom: 'clamp(48px,6vw,88px)' }}>
         <div data-two style={{ display: 'grid', gridTemplateColumns: '1fr 600px', gap: 'clamp(32px,5vw,88px)', alignItems: 'center' }}>
@@ -52,7 +56,7 @@ export default function HomePage() {
             <div aria-hidden style={{ position: 'absolute', right: -14, bottom: -14, width: '70%', height: '70%', background: c.goldSoft, borderRadius: 6 }} />
             <div style={{ position: 'relative', height: 'clamp(320px,34vw,480px)', overflow: 'hidden', borderRadius: 6, boxShadow: '0 40px 80px -44px rgba(28,27,24,.55)' }}>
               {/* eslint-disable-next-line @next/next/no-img-element */}
-              <img src={heroImg} alt="Magazijn met goederen voor zakelijke distributie" style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block' }} />
+              <img src={heroImg} alt="Magazijn met goederen voor zakelijke distributie" fetchPriority="high" decoding="async" style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block' }} />
             </div>
             <div style={{ position: 'absolute', left: 20, bottom: 20, padding: '14px 18px', background: 'rgba(20,19,16,.92)', backdropFilter: 'blur(6px)', borderRadius: 5, borderLeft: '2px solid ' + c.gold }}>
               <div style={{ font: '500 26px/1 ' + display, color: c.gold }}>24/7</div>
@@ -134,7 +138,7 @@ export default function HomePage() {
             <div aria-hidden style={{ position: 'absolute', left: -14, top: -14, width: '68%', height: '68%', background: c.goldSoft, borderRadius: 6 }} />
             <div data-rv style={{ position: 'relative', height: 'clamp(300px,30vw,440px)', overflow: 'hidden', borderRadius: 6, boxShadow: '0 40px 80px -46px rgba(28,27,24,.5)' }}>
               {/* eslint-disable-next-line @next/next/no-img-element */}
-              <img src={whyImg} alt="Chauffeur bij de bus van R.I.N. B.V." style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block' }} />
+              <img src={whyImg} alt="Chauffeur bij de bus van R.I.N. B.V." loading="lazy" decoding="async" style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block' }} />
             </div>
           </div>
           <div data-rv>

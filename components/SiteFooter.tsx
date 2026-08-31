@@ -28,7 +28,7 @@ export default function SiteFooter() {
         </div>
         <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit,minmax(200px,1fr))', gap: 'clamp(24px,3vw,44px)' }}>
           <div>
-            <img src="/rin-logo.png" alt={company.name} style={{ height: 24, width: 'auto', display: 'block' }} />
+            <img src="/rin-logo.png" alt={company.name} loading="lazy" decoding="async" width={600} height={95} style={{ height: 24, width: 'auto', display: 'block' }} />
             <p style={{ margin: '16px 0 0', maxWidth: '32ch', font: '400 14px/1.7 ' + font, color: 'rgba(251,250,247,.55)' }}>
               Koeriers- en spoedtransport voor bedrijven. Rechtstreeks van A naar B, met een vast aanspreekpunt en 24/7 spoedbereikbaarheid.
             </p>
@@ -62,6 +62,7 @@ export default function SiteFooter() {
               <Link data-footlink href="/over-ons" style={link}>Over ons</Link>
               <Link data-footlink href="/contact" style={link}>Contact</Link>
               <Link data-footlink href="/voorwaarden" style={link}>Algemene voorwaarden</Link>
+              <Link data-footlink href="/privacy" style={link}>Privacyverklaring</Link>
             </div>
           </div>
         </div>
